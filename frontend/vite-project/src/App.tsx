@@ -8,7 +8,9 @@ function App() {
   const [comment,  setComment] = useState("");
 
   useEffect(()=> {
-    axios.post("http://localhost:3000/home", {}, {withCredentials: true}).then((res)=> setComment(res.data))
+    axios.post("http://localhost:3000/home", {}, {
+      //Without this, the browser will ignore any cookies coming from the server.
+      withCredentials: true}).then((res)=> setComment(res.data))
   },[])
   return (
     <div>
